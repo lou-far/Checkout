@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Checkout.Domain.PaymentModule.Entities
+namespace Checkout.Application.Dto.PaymentModule.Inbound
 {
-    public class PaymentCard : DomainEntity
+    public class CreatePaymentCardAsyncDto
     {
-        public PaymentCard(
+        public CreatePaymentCardAsyncDto(
             long permanentAccountNumber,
             string cardHolderName,
             byte expiresOnMonth,
@@ -17,8 +17,6 @@ namespace Checkout.Domain.PaymentModule.Entities
             ExpiresOnYear = expiresOnYear;
             CardVerificationValue = cardVerificationValue;
         }
-
-        public int PaymentId { get; set; }
 
         public long PermanentAccountNumber { get; private set; }
 
