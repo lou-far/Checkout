@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+    <ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+	</ItemGroup>
+    <ItemGroup>
+    <ProjectReference Include="..\Checkout.Application.Interfaces\Checkout.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Checkout.Application\Checkout.Application.csproj" />
+    <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj" />
+    <ProjectReference Include="..\Checkout.Persistence.DataQuery\Checkout.Persistence.DataQuery.csproj" />
+    <ProjectReference Include="..\Checkout.Persistence\Checkout.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>

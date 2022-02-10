@@ -5,11 +5,15 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Checkout.Application.Dto\Checkout.Application.Dto.csproj" />
     <ProjectReference Include="..\Checkout.Application.Interfaces\Checkout.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Checkout.DependencyResolution\Checkout.DependencyResolution.csproj" />
     <ProjectReference Include="..\Checkout.Helper\Checkout.Helper.csproj" />
   </ItemGroup>
   <ItemGroup>

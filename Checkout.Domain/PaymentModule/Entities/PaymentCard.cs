@@ -18,6 +18,11 @@ namespace Checkout.Domain.PaymentModule.Entities
             CardVerificationValue = cardVerificationValue;
         }
 
+        public PaymentCard()
+        {
+            CardholderName = string.Empty;
+        }
+
         public int PaymentId { get; set; }
 
         public long PermanentAccountNumber { get; private set; }

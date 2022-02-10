@@ -41,6 +41,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Solution Assets", "6. So
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Checkout.Database", "Checkout.Database\Checkout.Database.sqlproj", "{834B7B69-B5EA-41B1-8B1B-E1249C76675E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependency Resolution", "Dependency Resolution", "{A4A9428D-3355-4577-A9B1-EDA99A8D2BC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.DependencyResolution", "Checkout.DependencyResolution\Checkout.DependencyResolution.csproj", "{5BC26191-E096-4EB9-A6FD-D91BFB31A230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,10 @@ Global
 		{834B7B69-B5EA-41B1-8B1B-E1249C76675E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{834B7B69-B5EA-41B1-8B1B-E1249C76675E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{834B7B69-B5EA-41B1-8B1B-E1249C76675E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5BC26191-E096-4EB9-A6FD-D91BFB31A230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC26191-E096-4EB9-A6FD-D91BFB31A230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC26191-E096-4EB9-A6FD-D91BFB31A230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC26191-E096-4EB9-A6FD-D91BFB31A230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +119,8 @@ Global
 		{78108448-890F-4B16-9C96-25A9E2EE2AA6} = {44DEB951-EA63-4264-9872-7860419E1E66}
 		{18D87F6B-2934-4795-8E5C-2334ACD4EF8A} = {44DEB951-EA63-4264-9872-7860419E1E66}
 		{834B7B69-B5EA-41B1-8B1B-E1249C76675E} = {7E331613-DBC8-478F-8FBC-914676F34263}
+		{A4A9428D-3355-4577-A9B1-EDA99A8D2BC6} = {E3627A9B-195C-4107-9DF6-3C8323AB40FE}
+		{5BC26191-E096-4EB9-A6FD-D91BFB31A230} = {A4A9428D-3355-4577-A9B1-EDA99A8D2BC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DDA8231-7E65-4A07-83D1-AEA9B20FBCE1}
