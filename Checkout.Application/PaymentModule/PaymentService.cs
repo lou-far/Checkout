@@ -2,6 +2,7 @@
 using Checkout.Domain.PaymentModule.Interfaces;
 using Checkout.Domain.PaymentModule.ValueObjects;
 
+using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
 namespace Checkout.Application.PaymentModule
@@ -17,10 +18,12 @@ namespace Checkout.Application.PaymentModule
         }
 
         public async Task<Outbound.GetPaymentInformationAsyncDto> GetAsync(
-            int identifier)
+            Inbound.GetPaymentInformationAsyncDto inboundPaymentInformation)
         {
             PaymentInformation paymentInformation =
-                await _paymentInformationQueryHandler.GetAsync(identifier);
+                await _paymentInformationQueryHandler.GetAsync(
+                    inboundPaymentInformation.MerchantId,
+                    inboundPaymentInformation.PaymentId);
 
             Outbound.GetPaymentInformationAsyncDto outboundPaymentInformation = new Outbound.GetPaymentInformationAsyncDto(
                 paymentInformation.Amount,

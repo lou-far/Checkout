@@ -5,6 +5,7 @@ namespace Checkout.Domain.PaymentModule.Interfaces
     public interface IPaymentInformationQueryHandler
     {
         Task<PaymentInformation> GetAsync(
-            int identifier);
+            int merchantId,
+            int paymentId);
     }
 }

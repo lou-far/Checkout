@@ -15,10 +15,11 @@ namespace Checkout.Persistence.DataQuery
         }
 
         public async Task<PaymentInformation> GetAsync(
-            int identifier)
+            int merchantId,
+            int paymentId)
             => await _checkoutDbContext
                 .Payments
-                .Where(payment => payment.Id == identifier)
+                .Where(payment => payment.Id == paymentId)
                 .Select(payment => new PaymentInformation(
                     payment.Amount,
                     payment.PaymentStatus,
@@ -34,6 +35,6 @@ namespace Checkout.Persistence.DataQuery
             .AsNoTracking()
             .SingleOrDefaultAsync()
             ?? throw new KeyNotFoundException(
-                $"Identifier {identifier}");
+                $"MerchantId {merchantId}, PaymentId {paymentId}");
     }
 }

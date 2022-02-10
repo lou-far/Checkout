@@ -14,6 +14,8 @@ namespace Checkout.Domain.PaymentModule.Entities
             PaymentCard = paymentCard;
         }
 
+        public int MerchantId { get; private set; }
+
         public int Amount { get; private set; }
 
         public PaymentStatus PaymentStatus { get; private set; }

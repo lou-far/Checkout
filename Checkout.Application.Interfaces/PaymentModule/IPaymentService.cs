@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
+using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
 namespace Checkout.Application.Interfaces.PaymentModule
 {
     public interface IPaymentService
     {
+        Task<Outbound.GetPaymentInformationAsyncDto> GetAsync(
+            Inbound.GetPaymentInformationAsyncDto inboundPaymentInformation);
     }
 }

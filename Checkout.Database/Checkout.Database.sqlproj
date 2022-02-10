@@ -58,5 +58,18 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Schemas" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Payment.sql" />
+    <Build Include="Tables\PaymentCard.sql" />
+    <Build Include="Tables\Merchant.sql" />
+    <Build Include="Schemas\merchant.sql" />
+    <Build Include="Schemas\payment.sql" />
+    <Build Include="Tables\PaymentStatus.sql" />
+    <Build Include="Tables\Currency.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

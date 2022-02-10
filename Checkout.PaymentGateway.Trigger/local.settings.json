@@ -1,0 +1,6 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "DbConnectionString": "Data Source=(local);Initial Catalog=sqldb-checkout-local;Integrated Security=True;"
+  }
+}
