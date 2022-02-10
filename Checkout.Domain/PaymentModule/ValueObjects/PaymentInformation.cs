@@ -1,15 +1,17 @@
 ﻿using Checkout.Helper.Enums;
 
-namespace Checkout.Domain.PaymentModule.Entities
+namespace Checkout.Domain.PaymentModule.ValueObjects
 {
-    public class Payment : AggregateRoot
+    public class PaymentInformation
     {
-        public Payment(
+        public PaymentInformation(
             int amount,
+            PaymentStatus paymentStatus,
             Currency currency,
-            PaymentCard paymentCard)
+            PaymentCardInformation paymentCard)
         {
             Amount = amount;
+            PaymentStatus = paymentStatus;
             Currency = currency;
             PaymentCard = paymentCard;
         }
@@ -20,6 +22,6 @@ namespace Checkout.Domain.PaymentModule.Entities
 
         public Currency Currency { get; private set; }
 
-        public PaymentCard PaymentCard { get; private set; }
+        public PaymentCardInformation PaymentCard { get; private set; }
     }
 }

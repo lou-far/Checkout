@@ -1,6 +1,9 @@
-﻿namespace Checkout.Persistence
+﻿using Checkout.Domain;
+using Checkout.Domain.PaymentModule.Entities;
+
+namespace Checkout.Persistence
 {
-    public class PaymentRepository
+    public interface IPaymentRepository : IRepository<Payment>
     {
 
     }
