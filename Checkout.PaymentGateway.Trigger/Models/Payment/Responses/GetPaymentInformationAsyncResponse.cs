@@ -6,8 +6,8 @@ namespace Checkout.PaymentGateway.Trigger.Models.Payment.Responses
     {
         public GetPaymentInformationAsyncResponse(
             int amount,
-            PaymentStatus paymentStatus,
-            Currency currency,
+            string paymentStatus,
+            string currency,
             GetPaymentCardInformationAsyncResponse paymentCard)
         {
             Amount = amount;
@@ -18,9 +18,9 @@ namespace Checkout.PaymentGateway.Trigger.Models.Payment.Responses
 
         public int Amount { get; private set; }
 
-        public PaymentStatus PaymentStatus { get; private set; }
+        public string PaymentStatus { get; private set; }
 
-        public Currency Currency { get; private set; }
+        public string Currency { get; private set; }
 
         public GetPaymentCardInformationAsyncResponse PaymentCard { get; private set; }
     }
