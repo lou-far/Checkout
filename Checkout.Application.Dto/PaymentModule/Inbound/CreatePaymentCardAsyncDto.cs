@@ -5,11 +5,11 @@ namespace Checkout.Application.Dto.PaymentModule.Inbound
     public class CreatePaymentCardAsyncDto
     {
         public CreatePaymentCardAsyncDto(
-            long permanentAccountNumber,
+            string permanentAccountNumber,
             string cardHolderName,
-            byte expiresOnMonth,
-            byte expiresOnYear,
-            short cardVerificationValue)
+            string expiresOnMonth,
+            string expiresOnYear,
+            string cardVerificationValue)
         {
             PermanentAccountNumber = permanentAccountNumber;
             CardholderName = cardHolderName;
@@ -18,14 +18,14 @@ namespace Checkout.Application.Dto.PaymentModule.Inbound
             CardVerificationValue = cardVerificationValue;
         }
 
-        public long PermanentAccountNumber { get; private set; }
+        public string PermanentAccountNumber { get; set; }
 
-        public string CardholderName { get; private set; }
+        public string CardholderName { get; set; }
 
-        public byte ExpiresOnMonth { get; private set; }
+        public string ExpiresOnMonth { get; set; }
 
-        public byte ExpiresOnYear { get; private set; }
+        public string ExpiresOnYear { get; set; }
 
-        public short CardVerificationValue { get; private set; }
+        public string CardVerificationValue { get; set; }
     }
 }

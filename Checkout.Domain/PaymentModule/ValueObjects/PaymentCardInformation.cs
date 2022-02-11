@@ -7,9 +7,9 @@ namespace Checkout.Domain.PaymentModule.ValueObjects
         public PaymentCardInformation(
            string maskedPermanentAccountNumber,
            string cardHolderName,
-           byte expiresOnMonth,
-           byte expiresOnYear,
-           short cardVerificationValue)
+           string expiresOnMonth,
+           string expiresOnYear,
+           string cardVerificationValue)
         {
             MaskedPermanentAccountNumber = maskedPermanentAccountNumber;
             CardholderName = cardHolderName;
@@ -22,10 +22,10 @@ namespace Checkout.Domain.PaymentModule.ValueObjects
 
         public string CardholderName { get; private set; }
 
-        public byte ExpiresOnMonth { get; private set; }
+        public string ExpiresOnMonth { get; private set; }
 
-        public byte ExpiresOnYear { get; private set; }
+        public string ExpiresOnYear { get; private set; }
 
-        public short CardVerificationValue { get; private set; }
+        public string CardVerificationValue { get; private set; }
     }
 }

@@ -5,11 +5,11 @@ namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
     public class CreatePaymentCardAsyncRequest
     {
         public CreatePaymentCardAsyncRequest(
-           long permanentAccountNumber,
+           string permanentAccountNumber,
            string cardHolderName,
-           byte expiresOnMonth,
-           byte expiresOnYear,
-           short cardVerificationValue)
+           string expiresOnMonth,
+           string expiresOnYear,
+           string cardVerificationValue)
         {
             PermanentAccountNumber = permanentAccountNumber;
             CardholderName = cardHolderName;
@@ -18,14 +18,14 @@ namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
             CardVerificationValue = cardVerificationValue;
         }
 
-        public long PermanentAccountNumber { get; private set; }
+        public string PermanentAccountNumber { get; private set; }
 
         public string CardholderName { get; private set; }
 
-        public byte ExpiresOnMonth { get; private set; }
+        public string ExpiresOnMonth { get; private set; }
 
-        public byte ExpiresOnYear { get; private set; }
+        public string ExpiresOnYear { get; private set; }
 
-        public short CardVerificationValue { get; private set; }
+        public string CardVerificationValue { get; private set; }
     }
 }

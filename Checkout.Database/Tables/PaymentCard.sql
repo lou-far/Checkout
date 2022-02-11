@@ -2,11 +2,11 @@
 (
 	[Id]						INT IDENTITY (1, 1) NOT NULL,
 	[PaymentId]					INT					NOT NULL,
-	[PermanentAccountNumber]	BIGINT				NOT NULL,
+	[PermanentAccountNumber]	VARCHAR(16)			NOT NULL,
 	[CardholderName]			NVARCHAR(128)		NOT NULL,
-	[ExpiresOnMonth]			TINYINT				NOT NULL,
-	[ExpiresOnYear]				TINYINT				NOT NULL,
-	[CardVerificationValue]		SMALLINT			NOT NULL,
+	[ExpiresOnMonth]			VARCHAR(2)			NOT NULL,
+	[ExpiresOnYear]				VARCHAR(2)			NOT NULL,
+	[CardVerificationValue]		VARCHAR(3)			NOT NULL,
     
     CONSTRAINT [PK_PaymentCard_Id] PRIMARY KEY CLUSTERED ([Id] ASC),
     

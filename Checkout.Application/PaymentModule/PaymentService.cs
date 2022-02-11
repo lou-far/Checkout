@@ -6,6 +6,7 @@ using Checkout.Domain.PaymentModule.Interfaces;
 using Checkout.Domain.PaymentModule.Repositories;
 using Checkout.Domain.PaymentModule.ValueObjects;
 using Checkout.Helper.Enums;
+using FluentValidation;
 
 using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
@@ -18,17 +19,20 @@ namespace Checkout.Application.PaymentModule
         private readonly IPaymentInformationQueryHandler _paymentInformationQueryHandler;
         private readonly IPaymentRepository _paymentRepository;
         private readonly IAcquiringBankRepository _acquiringBankRepository;
+        private readonly IValidator<Inbound.CreatePaymentAsyncDto> _createPaymentAsyncDtoValidator;
 
         public PaymentService(
             IUnitOfWork unitOfWork,
             IPaymentInformationQueryHandler paymentInformationQueryHandler,
             IPaymentRepository paymentRepository,
-            IAcquiringBankRepository acquiringBankRepository)
+            IAcquiringBankRepository acquiringBankRepository,
+            IValidator<Inbound.CreatePaymentAsyncDto> createPaymentAsyncDtoValidator)
         {
             _unitOfWork = unitOfWork;
             _paymentInformationQueryHandler = paymentInformationQueryHandler;
             _paymentRepository = paymentRepository;
             _acquiringBankRepository = acquiringBankRepository;
+            _createPaymentAsyncDtoValidator = createPaymentAsyncDtoValidator;
         }
 
         public async Task<Outbound.GetPaymentInformationAsyncDto> GetAsync(
@@ -57,6 +61,8 @@ namespace Checkout.Application.PaymentModule
         public async Task<Outbound.CreatePaymentAsyncDto> CreateAsync(
             Inbound.CreatePaymentAsyncDto createPayment)
         {
+            await _createPaymentAsyncDtoValidator.ValidateAndThrowAsync(createPayment);
+
             bool isSuccessful = _acquiringBankRepository.MakePayment(
                 new Services.Dto.AquiringBank.PaymentDto(
                 createPayment.Amount,

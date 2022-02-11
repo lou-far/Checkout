@@ -16,12 +16,12 @@ namespace Checkout.Application.Dto.PaymentModule.Inbound
             PaymentCard = paymentCard;
         }
 
-        public int MerchantId { get; private set; }
+        public int MerchantId { get; set; }
 
-        public int Amount { get; private set; }
+        public int Amount { get; set; }
 
-        public Currency Currency { get; private set; }
+        public Currency Currency { get; set; }
 
-        public CreatePaymentCardAsyncDto PaymentCard { get; private set; }
+        public CreatePaymentCardAsyncDto PaymentCard { get; set; }
     }
 }

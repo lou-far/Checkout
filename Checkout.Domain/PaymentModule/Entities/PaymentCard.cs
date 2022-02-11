@@ -5,11 +5,11 @@ namespace Checkout.Domain.PaymentModule.Entities
     public class PaymentCard : DomainEntity
     {
         public PaymentCard(
-            long permanentAccountNumber,
+            string permanentAccountNumber,
             string cardHolderName,
-            byte expiresOnMonth,
-            byte expiresOnYear,
-            short cardVerificationValue)
+            string expiresOnMonth,
+            string expiresOnYear,
+            string cardVerificationValue)
         {
             PermanentAccountNumber = permanentAccountNumber;
             CardholderName = cardHolderName;
@@ -25,14 +25,14 @@ namespace Checkout.Domain.PaymentModule.Entities
 
         public int PaymentId { get; set; }
 
-        public long PermanentAccountNumber { get; private set; }
+        public string PermanentAccountNumber { get; private set; }
 
         public string CardholderName { get; private set; }
 
-        public byte ExpiresOnMonth { get; private set; }
+        public string ExpiresOnMonth { get; private set; }
 
-        public byte ExpiresOnYear { get; private set; }
+        public string ExpiresOnYear { get; private set; }
 
-        public short CardVerificationValue { get; private set; }
+        public string CardVerificationValue { get; private set; }
     }
 }
