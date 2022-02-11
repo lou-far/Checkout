@@ -1,4 +1,4 @@
-#Checkout.com Payment Gateway Task
+# Checkout.com Payment Gateway Task
 The various layers of the solution are clearly separated out to ensure each layer only has access to the models and functions that it should do.
 1. Entry Points (Presentation) Layer
 	1. Handles triggers (HTTP, timer, queue, etc.) that initiate a request on the domain
@@ -20,19 +20,18 @@ The various layers of the solution are clearly separated out to ensure each laye
 	1. Storage of any supporting assets required by the solution
 
 ## How to run
----
 1. Build solution.
 1. Publish Checkout.Database to your local SQL Server instance with the name, 'sqldb-checkout-local'.
 1. Run Checkout.PaymentGateway.Trigger.
----
+
 ## How to use
 Open an API platform, e.g. Postman, Fiddler.
 
-###Create a payment
+### Create a payment
 
-####Request
+#### Request
 POST http://localhost:7071/api/merchants/{merchantId}/payments/
-####Body
+#### Body
 `
 {
 	"merchantId": int,
@@ -48,7 +47,7 @@ POST http://localhost:7071/api/merchants/{merchantId}/payments/
 }
 `
 
-####Response
+#### Response
 `
 {
 	"paymentId": int,
@@ -56,10 +55,10 @@ POST http://localhost:7071/api/merchants/{merchantId}/payments/
 }
 `
 
-###Retrieve a payment's detail
+### Retrieve a payment's detail
 GET http://localhost:7071/api/merchants/{merchantId}/payments/{paymentId}/
 
-####Response
+#### Response
 `
 {
 	"amount": int,
