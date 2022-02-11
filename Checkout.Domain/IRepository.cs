@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Checkout.Domain
 {
@@ -12,7 +13,7 @@ namespace Checkout.Domain
         Task<IEnumerable<TAggregateRoot>> GetAllAsync(
             Expression<Func<TAggregateRoot, bool>>? filter = null);
 
-        Task InsertAsync(
+        Task<EntityEntry<TAggregateRoot>> InsertAsync(
             TAggregateRoot aggregateRoot);
 
         void Update(

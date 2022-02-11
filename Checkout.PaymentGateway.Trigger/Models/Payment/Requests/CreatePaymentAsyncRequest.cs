@@ -1,14 +1,15 @@
-﻿using Checkout.Helper.Enums;
+﻿using System;
+using Checkout.Helper.Enums;
 
-namespace Checkout.Application.Dto.PaymentModule.Inbound
+namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
 {
-    public class CreatePaymentAsyncDto
+    public class CreatePaymentAsyncRequest
     {
-        public CreatePaymentAsyncDto(
+        public CreatePaymentAsyncRequest(
             int merchantId,
             int amount,
             Currency currency,
-            CreatePaymentCardAsyncDto paymentCard)
+            CreatePaymentCardAsyncRequest paymentCard)
         {
             MerchantId = merchantId;
             Amount = amount;
@@ -22,6 +23,6 @@ namespace Checkout.Application.Dto.PaymentModule.Inbound
 
         public Currency Currency { get; private set; }
 
-        public CreatePaymentCardAsyncDto PaymentCard { get; private set; }
+        public CreatePaymentCardAsyncRequest PaymentCard { get; private set; }
     }
 }

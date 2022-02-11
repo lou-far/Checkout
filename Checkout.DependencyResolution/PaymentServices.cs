@@ -14,7 +14,8 @@ namespace Checkout.DependencyResolution
         {
             services.AddScoped<IPaymentRepository, PaymentRepository>();
 
-            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPaymentCreateService, PaymentService>();
+            services.AddScoped<IPaymentGetService, PaymentService>();
 
             return services;
         }

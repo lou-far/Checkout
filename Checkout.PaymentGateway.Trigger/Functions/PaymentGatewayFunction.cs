@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Checkout.Application.Interfaces.PaymentModule;
+using Checkout.PaymentGateway.Trigger.Models.Payment.Requests;
 using Checkout.PaymentGateway.Trigger.Models.Payment.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,15 +15,18 @@ namespace Checkout.PaymentGateway.Trigger
 {
     public class PaymentGatewayFunction
     {
-        private readonly IPaymentService _paymentService;
+        private readonly IPaymentCreateService _paymentCreateService;
+        private readonly IPaymentGetService _paymentGetService;
         private readonly IMapper _mapper;
 
         public PaymentGatewayFunction(
             IMapper mapper,
-            IPaymentService paymentService)
+            IPaymentCreateService paymentCreateService,
+            IPaymentGetService paymentGetService)
         {
             _mapper = mapper;
-            _paymentService = paymentService;
+            _paymentCreateService = paymentCreateService;
+            _paymentGetService = paymentGetService;
         }
 
         [FunctionName(nameof(GetPaymentInformationAsync))]
@@ -43,12 +47,32 @@ namespace Checkout.PaymentGateway.Trigger
                     paymentId);
 
             Outbound.GetPaymentInformationAsyncDto outboundGetPaymentInformationAsyncDto =
-                await _paymentService.GetAsync(inboundGetPaymentInformationAsyncDto);
+                await _paymentGetService.GetAsync(inboundGetPaymentInformationAsyncDto);
 
             GetPaymentInformationAsyncResponse getPaymentInformationAsyncResponse =
                 _mapper.Map<GetPaymentInformationAsyncResponse>(outboundGetPaymentInformationAsyncDto);
 
             return new OkObjectResult(getPaymentInformationAsyncResponse);
+        }
+
+        [FunctionName(nameof(CreatePaymentAsync))]
+        public async Task<IActionResult> CreatePaymentAsync(
+            [HttpTrigger(
+                AuthorizationLevel.Anonymous,
+                Helper.Constants.HttpMethods.Post,
+                Route = "merchants/{merchantId}/payments")]
+            [FromBody] CreatePaymentAsyncRequest createPaymentAsyncRequest)
+        {
+            Inbound.CreatePaymentAsyncDto inboundCreatePaymentAsyncDto =
+                _mapper.Map<Inbound.CreatePaymentAsyncDto>(createPaymentAsyncRequest);
+
+            Outbound.CreatePaymentAsyncDto outboundCreatePaymentAsyncDto =
+                await _paymentCreateService.CreateAsync(inboundCreatePaymentAsyncDto);
+
+            CreatePaymentAsyncResponse createPaymentAsyncResponse =
+                _mapper.Map<CreatePaymentAsyncResponse>(outboundCreatePaymentAsyncDto);
+
+            return new OkObjectResult(createPaymentAsyncResponse);
         }
     }
 }

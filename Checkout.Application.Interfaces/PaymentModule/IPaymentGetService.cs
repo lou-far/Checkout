@@ -5,7 +5,7 @@ using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
 namespace Checkout.Application.Interfaces.PaymentModule
 {
-    public interface IPaymentService
+    public interface IPaymentGetService
     {
         Task<Outbound.GetPaymentInformationAsyncDto> GetAsync(
             Inbound.GetPaymentInformationAsyncDto inboundPaymentInformation);

@@ -25,7 +25,23 @@ namespace Checkout.Persistence.DataQuery
                     payment.PaymentStatus,
                     payment.Currency,
                     new PaymentCardInformation(
-                        payment.PaymentCard.PermanentAccountNumber.ToString(),
+                        new string(
+                            'x',
+                            payment
+                            .PaymentCard
+                            .PermanentAccountNumber
+                            .ToString()
+                            .Length - 4) +
+                        payment
+                        .PaymentCard
+                        .PermanentAccountNumber
+                        .ToString()
+                        .Substring(
+                            payment
+                            .PaymentCard
+                            .PermanentAccountNumber
+                            .ToString()
+                            .Length - 4),
                         payment.PaymentCard.CardholderName,
                         payment.PaymentCard.ExpiresOnMonth,
                         payment.PaymentCard.ExpiresOnYear,

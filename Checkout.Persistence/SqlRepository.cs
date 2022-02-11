@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Checkout.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Checkout.Persistence
 {
@@ -50,7 +51,7 @@ namespace Checkout.Persistence
         public async Task<IEnumerable<TAggregateRoot>> GetAllAsync()
             => await _checkoutDbContext.Set<TAggregateRoot>().ToListAsync();
 
-        public async Task InsertAsync(
+        public async Task<EntityEntry<TAggregateRoot>> InsertAsync(
             TAggregateRoot aggregateRoot)
             => await _checkoutDbContext.Set<TAggregateRoot>().AddAsync(aggregateRoot);
 

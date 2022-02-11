@@ -1,20 +1,34 @@
 ﻿using Checkout.Application.Interfaces.PaymentModule;
+using Checkout.Domain;
+using Checkout.Domain.AcquiringBankModule.Repositories;
+using Checkout.Domain.PaymentModule.Entities;
 using Checkout.Domain.PaymentModule.Interfaces;
+using Checkout.Domain.PaymentModule.Repositories;
 using Checkout.Domain.PaymentModule.ValueObjects;
+using Checkout.Helper.Enums;
 
 using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
 namespace Checkout.Application.PaymentModule
 {
-    public class PaymentService : IPaymentService
+    public class PaymentService : IPaymentGetService, IPaymentCreateService
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IPaymentInformationQueryHandler _paymentInformationQueryHandler;
+        private readonly IPaymentRepository _paymentRepository;
+        private readonly IAcquiringBankRepository _acquiringBankRepository;
 
         public PaymentService(
-            IPaymentInformationQueryHandler paymentInformationQueryHandler)
+            IUnitOfWork unitOfWork,
+            IPaymentInformationQueryHandler paymentInformationQueryHandler,
+            IPaymentRepository paymentRepository,
+            IAcquiringBankRepository acquiringBankRepository)
         {
+            _unitOfWork = unitOfWork;
             _paymentInformationQueryHandler = paymentInformationQueryHandler;
+            _paymentRepository = paymentRepository;
+            _acquiringBankRepository = acquiringBankRepository;
         }
 
         public async Task<Outbound.GetPaymentInformationAsyncDto> GetAsync(
@@ -38,6 +52,43 @@ namespace Checkout.Application.PaymentModule
                 );
 
             return outboundPaymentInformation;
+        }
+
+        public async Task<Outbound.CreatePaymentAsyncDto> CreateAsync(
+            Inbound.CreatePaymentAsyncDto createPayment)
+        {
+            bool isSuccessful = _acquiringBankRepository.MakePayment(
+                new Services.Dto.AquiringBank.PaymentDto(
+                createPayment.Amount,
+                createPayment.Currency.ToString(),
+                new Services.Dto.AquiringBank.PaymentCardDto(
+                    createPayment.PaymentCard.PermanentAccountNumber,
+                    createPayment.PaymentCard.CardholderName,
+                    createPayment.PaymentCard.ExpiresOnMonth,
+                    createPayment.PaymentCard.ExpiresOnYear,
+                    createPayment.PaymentCard.CardVerificationValue)
+                )
+            );
+
+            Payment payment = new Payment(
+                    createPayment.MerchantId,
+                    createPayment.Amount,
+                    isSuccessful ? PaymentStatus.Successful : PaymentStatus.Failed,
+                    createPayment.Currency,
+                    new PaymentCard(
+                        createPayment.PaymentCard.PermanentAccountNumber,
+                        createPayment.PaymentCard.CardholderName,
+                        createPayment.PaymentCard.ExpiresOnMonth,
+                        createPayment.PaymentCard.ExpiresOnYear,
+                        createPayment.PaymentCard.CardVerificationValue)
+                    );
+
+            await _paymentRepository.InsertAsync(payment);
+            await _unitOfWork.CommitAsync();
+
+            return new Outbound.CreatePaymentAsyncDto(
+                payment.Id,
+                isSuccessful);
         }
     }
 }

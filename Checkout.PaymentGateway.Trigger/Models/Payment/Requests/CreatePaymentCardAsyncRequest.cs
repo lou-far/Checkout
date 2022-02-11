@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace Checkout.Domain.PaymentModule.Entities
+namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
 {
-    public class PaymentCard : DomainEntity
+    public class CreatePaymentCardAsyncRequest
     {
-        public PaymentCard(
-            long permanentAccountNumber,
-            string cardHolderName,
-            byte expiresOnMonth,
-            byte expiresOnYear,
-            short cardVerificationValue)
+        public CreatePaymentCardAsyncRequest(
+           long permanentAccountNumber,
+           string cardHolderName,
+           byte expiresOnMonth,
+           byte expiresOnYear,
+           short cardVerificationValue)
         {
             PermanentAccountNumber = permanentAccountNumber;
             CardholderName = cardHolderName;
@@ -17,13 +17,6 @@ namespace Checkout.Domain.PaymentModule.Entities
             ExpiresOnYear = expiresOnYear;
             CardVerificationValue = cardVerificationValue;
         }
-
-        private PaymentCard()
-        {
-            CardholderName = string.Empty;
-        }
-
-        public int PaymentId { get; set; }
 
         public long PermanentAccountNumber { get; private set; }
 

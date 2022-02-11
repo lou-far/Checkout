@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj" />
     <ProjectReference Include="..\Checkout.Persistence.DataQuery\Checkout.Persistence.DataQuery.csproj" />
     <ProjectReference Include="..\Checkout.Persistence\Checkout.Persistence.csproj" />
+    <ProjectReference Include="..\Checkout.Services\Checkout.Services.csproj" />
     </ItemGroup>
 
 </Project>

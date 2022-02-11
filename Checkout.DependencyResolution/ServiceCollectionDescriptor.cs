@@ -8,8 +8,10 @@ namespace Checkout.DependencyResolution
         public static IServiceCollection AddTriggerCompositionRoot(
             this IServiceCollection services)
             => services
+                .AddAcquiringBankServices()
                 .AddDataQueryServices()
                 .AddDbContexts()
+                .AddExternalServices()
                 .AddMapperServices()
                 .AddPaymentServices()
                 .AddPersistenceServices();

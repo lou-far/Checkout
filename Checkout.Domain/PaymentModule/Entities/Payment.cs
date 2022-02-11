@@ -4,14 +4,16 @@ namespace Checkout.Domain.PaymentModule.Entities
 {
     public class Payment : AggregateRoot
     {
-        private readonly PaymentCard _paymentCard;
-
         public Payment(
+            int merchantId,
             int amount,
+            PaymentStatus paymentStatus,
             Currency currency,
             PaymentCard paymentCard)
         {
+            MerchantId = merchantId;
             Amount = amount;
+            PaymentStatus = paymentStatus;
             Currency = currency;
             PaymentCard = paymentCard;
         }

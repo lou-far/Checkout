@@ -19,6 +19,7 @@ namespace Checkout.DependencyResolution
             this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(SqlRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

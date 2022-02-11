@@ -21,6 +21,8 @@ namespace Checkout.Persistence
             ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Payment>().ToTable(PaymentTableNames.Payment, SchemaNames.Payment);
+            modelBuilder.Entity<Payment>().Property(x => x.Currency).HasColumnName("CurrencyId");
+            modelBuilder.Entity<Payment>().Property(x => x.PaymentStatus).HasColumnName("PaymentStatusId");
             modelBuilder.Entity<PaymentCard>().ToTable(PaymentTableNames.PaymentCard, SchemaNames.Payment);
         }
 

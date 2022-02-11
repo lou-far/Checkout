@@ -1,29 +1,27 @@
 ﻿using System;
 
-namespace Checkout.Domain.PaymentModule.Entities
+namespace Checkout.Services.Dto.AquiringBank
 {
-    public class PaymentCard : DomainEntity
+    public class PaymentCardDto
     {
-        public PaymentCard(
+        public PaymentCardDto(
             long permanentAccountNumber,
-            string cardHolderName,
+            string cardholderName,
             byte expiresOnMonth,
             byte expiresOnYear,
             short cardVerificationValue)
         {
             PermanentAccountNumber = permanentAccountNumber;
-            CardholderName = cardHolderName;
+            CardholderName = cardholderName;
             ExpiresOnMonth = expiresOnMonth;
             ExpiresOnYear = expiresOnYear;
             CardVerificationValue = cardVerificationValue;
         }
 
-        private PaymentCard()
+        private PaymentCardDto()
         {
             CardholderName = string.Empty;
         }
-
-        public int PaymentId { get; set; }
 
         public long PermanentAccountNumber { get; private set; }
 

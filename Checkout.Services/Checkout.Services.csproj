@@ -7,17 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Checkout.Domain\Checkout.Domain.csproj" />
     <ProjectReference Include="..\Checkout.Helper\Checkout.Helper.csproj" />
     <ProjectReference Include="..\Checkout.Services.Dto\Checkout.Services.Dto.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AcquiringBankModule\ValueObjects\" />
+    <ProjectReference Include="..\Checkout.Services.Interfaces\Checkout.Services.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
