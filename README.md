@@ -90,6 +90,7 @@ GET http://localhost:7071/api/merchants/{merchantId}/payments/{paymentId}/
 1. Separate out merchant data into separate tenants to better compartmentalise data, from both a security and management perspective.
 1. Not store card detail as plain text in the database.
 1. Introduce IaC as part of the solution
+1. Separate PaymentGateway and AcquiringBank APIs.
 
 ## What cloud technologies would be used.
 1. Azure Functions for Payment Gateway entry point; for a serverless, maintainless infrastructure.

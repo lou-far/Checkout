@@ -5,8 +5,10 @@ using Checkout.Domain.PaymentModule.Entities;
 using Checkout.Domain.PaymentModule.Interfaces;
 using Checkout.Domain.PaymentModule.Repositories;
 using Checkout.Domain.PaymentModule.ValueObjects;
+using Checkout.Helper.Constants;
 using Checkout.Helper.Enums;
 using FluentValidation;
+using FluentValidation.Results;
 
 using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
@@ -61,7 +63,14 @@ namespace Checkout.Application.PaymentModule
         public async Task<Outbound.CreatePaymentAsyncDto> CreateAsync(
             Inbound.CreatePaymentAsyncDto createPayment)
         {
-            await _createPaymentAsyncDtoValidator.ValidateAndThrowAsync(createPayment);
+            ValidationResult validationResult = await _createPaymentAsyncDtoValidator.ValidateAsync(createPayment);
+            if (!validationResult.IsValid)
+            {
+                return new Outbound.CreatePaymentAsyncDto(
+                    default(int),
+                    validationResult.IsValid,
+                    validationResult.ToString());
+            }
 
             bool isSuccessful = await _acquiringBankRepository.CreatePaymentAsync(
                 new Services.Dto.AquiringBank.PaymentDto(
@@ -94,7 +103,8 @@ namespace Checkout.Application.PaymentModule
 
             return new Outbound.CreatePaymentAsyncDto(
                 payment.Id,
-                isSuccessful);
+                isSuccessful,
+                isSuccessful ? string.Empty : ErrorMessages.BankRefusedPayment);
         }
     }
 }
