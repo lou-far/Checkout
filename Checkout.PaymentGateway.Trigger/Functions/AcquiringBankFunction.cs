@@ -14,7 +14,7 @@ namespace Checkout.Trigger.Functions
         [FunctionName(nameof(CreatePayment))]
         public IActionResult CreatePayment(
             [HttpTrigger(
-                AuthorizationLevel.Anonymous, 
+                AuthorizationLevel.Function, 
                 HttpMethods.Post,
                 Route = "payments")]
             CreateAcquiringBankRequest createAcquringBankRequest)
