@@ -1,12 +1,12 @@
 ﻿using System;
 using AutoMapper;
-using Checkout.PaymentGateway.Trigger.Models.Payment.Requests;
-using Checkout.PaymentGateway.Trigger.Models.Payment.Responses;
+using Checkout.Trigger.Models.Payment.Requests;
+using Checkout.Trigger.Models.Payment.Responses;
 
 using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
-namespace Checkout.PaymentGateway.Trigger.Profiles
+namespace Checkout.Trigger.Profiles
 {
     public class PaymentProfile : Profile
     {

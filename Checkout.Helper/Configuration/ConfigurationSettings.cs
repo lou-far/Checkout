@@ -4,6 +4,9 @@ namespace Checkout.Helper.Configuration
 {
     public static class ConfigurationSettings
     {
+        public static string AcquiringBankApiUrl =>
+            GetConfigurationValue<string>(ConfigurationKeys.AcquiringBankApiUrl);
+
         public static string DbConnectionString =>
             GetConfigurationValue<string>(ConfigurationKeys.DbConnectionString);
 

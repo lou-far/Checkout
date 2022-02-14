@@ -63,7 +63,7 @@ namespace Checkout.Application.PaymentModule
         {
             await _createPaymentAsyncDtoValidator.ValidateAndThrowAsync(createPayment);
 
-            bool isSuccessful = _acquiringBankRepository.MakePayment(
+            bool isSuccessful = await _acquiringBankRepository.CreatePaymentAsync(
                 new Services.Dto.AquiringBank.PaymentDto(
                 createPayment.Amount,
                 createPayment.Currency.ToString(),

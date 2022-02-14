@@ -22,7 +22,7 @@ The various layers of the solution are clearly separated out to ensure each laye
 ## How to run
 1. Build solution.
 1. Publish Checkout.Database to your local SQL Server instance with the name, 'sqldb-checkout-local'.
-1. Run Checkout.PaymentGateway.Trigger.
+1. Run Checkout.Trigger.
 
 ## How to use
 Open an API platform, e.g. Postman, Fiddler.

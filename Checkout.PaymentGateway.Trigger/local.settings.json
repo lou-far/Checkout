@@ -1,6 +1,7 @@
 {
   "IsEncrypted": false,
   "Values": {
+    "AcquiringBankApiUrl": "http://localhost:7071/api",
     "DbConnectionString": "Data Source=(local);Initial Catalog=sqldb-checkout-local;Integrated Security=True;TrustServerCertificate=True"
   }
 }

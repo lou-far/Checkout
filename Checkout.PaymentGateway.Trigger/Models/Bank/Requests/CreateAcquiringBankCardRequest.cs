@@ -1,24 +1,33 @@
 ﻿using System;
 
-namespace Checkout.Trigger.Models.Payment.Responses
+namespace Checkout.Trigger.Models.Bank.Requests
 {
-    public class GetPaymentCardInformationAsyncResponse
+    public class CreateAcquiringBankCardRequest
     {
-        public GetPaymentCardInformationAsyncResponse(
-           string maskedPermanentAccountNumber,
+        public CreateAcquiringBankCardRequest(
+           string permanentAccountNumber,
            string cardHolderName,
            string expiresOnMonth,
            string expiresOnYear,
            string cardVerificationValue)
         {
-            MaskedPermanentAccountNumber = maskedPermanentAccountNumber;
+            PermanentAccountNumber = permanentAccountNumber;
             CardholderName = cardHolderName;
             ExpiresOnMonth = expiresOnMonth;
             ExpiresOnYear = expiresOnYear;
             CardVerificationValue = cardVerificationValue;
         }
 
-        public string MaskedPermanentAccountNumber { get; private set; }
+        private CreateAcquiringBankCardRequest()
+        {
+            PermanentAccountNumber = string.Empty;
+            CardholderName = string.Empty;
+            ExpiresOnMonth = string.Empty;
+            ExpiresOnYear = string.Empty;
+            CardVerificationValue = string.Empty;
+        }
+
+        public string PermanentAccountNumber { get; private set; }
 
         public string CardholderName { get; private set; }
 

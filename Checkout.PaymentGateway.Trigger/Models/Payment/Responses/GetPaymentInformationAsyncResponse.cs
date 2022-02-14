@@ -1,6 +1,6 @@
 ﻿using Checkout.Helper.Enums;
 
-namespace Checkout.PaymentGateway.Trigger.Models.Payment.Responses
+namespace Checkout.Trigger.Models.Payment.Responses
 {
     public class GetPaymentInformationAsyncResponse
     {

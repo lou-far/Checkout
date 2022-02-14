@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
+namespace Checkout.Trigger.Models.Payment.Requests
 {
     public class CreatePaymentCardAsyncRequest
     {

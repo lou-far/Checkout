@@ -10,7 +10,7 @@ namespace Checkout.DependencyResolution
         public static IServiceCollection AddExternalServices(
             this IServiceCollection services)
         {
-            services.AddScoped<IAcquiringBankApi, MockAcquiringBankApi>();
+            services.AddScoped<IAcquiringBankApi, AcquiringBankApi>();
 
             return services;
         }

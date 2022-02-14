@@ -15,10 +15,10 @@ namespace Checkout.Services.AcquiringBank
             _acquiringBankApi = acquiringBankApi;
         }
 
-        public bool MakePayment(
+        public async Task<bool> CreatePaymentAsync(
             PaymentDto paymentDto)
         {
-            bool isSuccessful = _acquiringBankApi.MakePayment(paymentDto);
+            bool isSuccessful = await _acquiringBankApi.CreatePaymentAsync(paymentDto);
 
             return isSuccessful;
         }

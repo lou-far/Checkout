@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.PaymentGateway.Trigger", "Checkout.PaymentGateway.Trigger\Checkout.PaymentGateway.Trigger.csproj", "{131565CD-D447-4825-B7BE-05EB5A8C84D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Trigger", "Checkout.PaymentGateway.Trigger\Checkout.Trigger.csproj", "{131565CD-D447-4825-B7BE-05EB5A8C84D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Infrastructure - Transversal", "5. Infrastructure - Transversal", "{E3627A9B-195C-4107-9DF6-3C8323AB40FE}"
 EndProject

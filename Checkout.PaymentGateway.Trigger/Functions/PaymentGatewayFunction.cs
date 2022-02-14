@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Checkout.Application.Interfaces.PaymentModule;
-using Checkout.PaymentGateway.Trigger.Models.Payment.Requests;
-using Checkout.PaymentGateway.Trigger.Models.Payment.Responses;
+using Checkout.Trigger.Models.Payment.Requests;
+using Checkout.Trigger.Models.Payment.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -11,7 +11,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Inbound = Checkout.Application.Dto.PaymentModule.Inbound;
 using Outbound = Checkout.Application.Dto.PaymentModule.Outbound;
 
-namespace Checkout.PaymentGateway.Trigger
+namespace Checkout.Trigger
 {
     public class PaymentGatewayFunction
     {

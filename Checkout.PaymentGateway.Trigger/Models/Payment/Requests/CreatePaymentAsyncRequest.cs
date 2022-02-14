@@ -1,7 +1,7 @@
 ﻿using System;
 using Checkout.Helper.Enums;
 
-namespace Checkout.PaymentGateway.Trigger.Models.Payment.Requests
+namespace Checkout.Trigger.Models.Payment.Requests
 {
     public class CreatePaymentAsyncRequest
     {

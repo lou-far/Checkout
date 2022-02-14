@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
 using Checkout.DependencyResolution;
-using Checkout.PaymentGateway.Trigger;
+using Checkout.Trigger;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 
 [assembly: FunctionsStartup(typeof(Startup))]
-namespace Checkout.PaymentGateway.Trigger
+namespace Checkout.Trigger
 {
     public class Startup : FunctionsStartup
     {

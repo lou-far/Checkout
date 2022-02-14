@@ -4,7 +4,8 @@ namespace Checkout.Services.Interfaces
 {
     public interface IAcquiringBankApi
     {
-        bool MakePayment(
-            PaymentDto payment);
+        Task<bool> CreatePaymentAsync(
+            PaymentDto payment,
+            CancellationToken cancellationToken = default);
     }
 }

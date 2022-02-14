@@ -5,7 +5,7 @@ namespace Checkout.Domain.AcquiringBankModule.Repositories
 {
     public interface IAcquiringBankRepository
     {
-        bool MakePayment(
+        Task<bool> CreatePaymentAsync(
                PaymentDto paymentDto);
     }
 }
